@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
-function Login() {
+function Register() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here, you can make an API call to your backend to authenticate the user
-    console.log('Login attempt:', username, password);
+    // Here, you can make an API call to your backend to register the user
+    console.log('Registering:', username, email, password);
     // Handle the response
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="register-container">
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -23,6 +24,16 @@ function Login() {
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -36,13 +47,13 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
       <p>
-        Don't have an account? <Link to="/register">Sign up now!</Link>
+        Already have an account? <Link to="/">Login here</Link>
       </p>
     </div>
   );
 }
 
-export default Login;
+export default Register;
